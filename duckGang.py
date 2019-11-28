@@ -8,8 +8,14 @@ n1= int(initialPopulation/3) #node-1 of model
 n2 = int(initialPopulation/3)
 n3 = int(initialPopulation/3)
 
-oilSpill = 1000
-n3 = n3 - oilSpill
+oilSpillType = 0
+if oilSpillType == 1:
+    n3 = n3 - 1000
+elif oilSpillType == 2:
+    n3 = n3 - 3000
+elif oilSpillType == 3:
+    n2 = n2 - (4600-n3)
+    n3 = 0
 
 S1 = 0.8 #survival rate from n1 -> n2
 S2 = S1 #survival rate from n2 -> n3
