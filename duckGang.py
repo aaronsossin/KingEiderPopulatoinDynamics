@@ -8,18 +8,24 @@ n1= int(initialPopulation/3) #node-1 of model
 n2 = int(initialPopulation/3)
 n3 = int(initialPopulation/3)
 
-oilSpillType = 0
-if oilSpillType == 1:
+catastropheType = 0
+if catastropheType == 1:
     n3 = n3 - 1000
-elif oilSpillType == 2:
+elif catastropheType== 2:
     n3 = n3 - 3000
-elif oilSpillType == 3:
+elif catastropheType == 3:
     n2 = n2 - (4600-n3)
     n3 = 0
+elif catastropheType == 4:
+    n1 = n1 / 2
+    n2 = n2/2
+    n3 = n3/2
+initialPopulation = n1 + n2 + n3
 
-S1 = 0.8 #survival rate from n1 -> n2
-S2 = S1 #survival rate from n2 -> n3
-S3 = 0.8 #survival rate from n3 -> n3
+
+S1 = 0.65 #survival rate from n1 -> n2
+S2 = 1 #survival rate from n2 -> n3
+S3 = 0.94 #survival rate from n3 -> n3
 
 F3 = 0.78 * 4.41 * 0.36 * 0.10 * 0.65 * 1 * 0.5 #fecundity rate
 print("Fecundity rate (doesn't make sense) ",  F3)
