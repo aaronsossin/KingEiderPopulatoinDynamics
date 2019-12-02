@@ -2,14 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from statistics import mean
 
-n1= 500 #int(initialPopulation/3) #node-1 of model
-n2 = 500 #int(initialPopulation/3)
-#n3 = 9000 #int(initialPopulation/3)
-n3 = 9000
+n1= 500 #Eiders aged 1-2 years
+n2 = 500 #Eiders aged 2-3 years
+n3 = 9000 #Eiders aged > 3 years
 
-globalWarming = False #survival rate slowly decreases
-globalWarmingEgg = False
-literature = True
+
 catastropheType = 0
 if catastropheType == 1:
     n3 = n3 - 1000
@@ -27,12 +24,8 @@ S1 = 0.65 #survival rate from n1 -> n2
 S2 = 1 #survival rate from n2 -> n3
 S3 = 0.94 #survival rate from n3 -> n3
 
-#if (literature):
-    #S2 = 0.87
-
 F3 = 0.78 * 4.41 * 0.36 * 0.10 * 0.65 * 1 * 0.5 #fecundity rate
-#F3 = 0.09245411971651946
-print(F3)
+
 timeLapse = 50 #years
 
 def model(timeLapse, n1,n2,n3, S1, S2, S3, F3, S1rate=1, S2rate=1, S3rate=1, F3rate=1, globalWarming=False, globalWarmingEgg=False):
@@ -64,21 +57,6 @@ def model(timeLapse, n1,n2,n3, S1, S2, S3, F3, S1rate=1, S2rate=1, S3rate=1, F3r
             S2 = 1
         if (S3 > 1):
             S3 = 1
-
-        """ Scenarios """
-        if (globalWarming):
-            S1 = S1 - 0.01
-            S3 = S3 - 0.01
-
-        if (globalWarmingEgg):
-            F3 = F3 * 1.01
-            if (F3 > 1):
-                F3 = 1
-            #if (x > 15):
-               # S1 = S1 * 0.98
-               # S2 = S2 * 0.98
-               # S3 = S3 * 0.98
-
 
         """ FOR GRAPH"""
         xs.append(x+1)
